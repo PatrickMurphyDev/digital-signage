@@ -34,7 +34,7 @@ app
     mongoose.Promise = Promise
     mongoose.connect(
       Keys.MONGODB_URI,
-      { useNewUrlParser: true }
+      { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }
     )
     const db = mongoose.connection
     db.on('error', console.error.bind(console, 'connection error:'))

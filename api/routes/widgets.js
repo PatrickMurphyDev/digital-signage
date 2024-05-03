@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const mongooseCrudify = require('mongoose-crudify')
+const mongooseCrudify = require('@voluntarily/mongoose-crudify')
 
 const Widget = require('../models/Widget')
 const CommonHelper = require('../helpers/common_helper')
