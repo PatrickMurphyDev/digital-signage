@@ -29,6 +29,7 @@ class SlideshowList extends Component {
 
   render() {
     const { slideshows } = this.state
+    let iCnt = 100
     return (
       <div className={'list'}>
         {slideshows
@@ -43,7 +44,7 @@ class SlideshowList extends Component {
           : Array(4)
               .fill()
               .map(() => (
-                <ContentLoader height={120} width={640}>
+                <ContentLoader height={120} width={640} key={`item-${iCnt++}`}>
                   <rect x='0' y='0' rx='5' ry='5' width='100%' height='80' />
                 </ContentLoader>
               ))}
