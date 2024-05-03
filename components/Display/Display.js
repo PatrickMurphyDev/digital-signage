@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /**
  * @fileoverview Shows the display frame and renders all the
  * widgets inside of it
@@ -31,6 +32,9 @@ class Display extends React.Component {
   }
 
   componentDidMount() {
+    //const sleep = ms => new Promise(r => setTimeout(r, ms));
+    //sleep(2000)
+    console.log(this.props)
     this.refresh()
     const { host = 'http://localhost' } = this.props
     const socket = socketIOClient(host)
@@ -43,9 +47,12 @@ class Display extends React.Component {
 
   refresh = () => {
     const { display } = this.props
+    if(display){
     return getDisplay(display).then(({ widgets = [], layout, statusBar = DEFAULT_STATUS_BAR }) => {
+      console.log('refresh display, get display data (widgets,layout,statusBar) ',JSON.stringify(display))
       this.setState({ widgets, layout, statusBar })
     })
+    } // else error
   }
 
   render() {
@@ -73,6 +80,7 @@ class Display extends React.Component {
           >
             {widgets.map(widget => {
               const Widget = Widgets[widget.type] ? Widgets[widget.type].Widget : EmptyWidget
+              console.log('widgetdata: ', widget)
               return (
                 <div key={widget._id} className={'widget'}>
                   <Widget data={widget.data} />
