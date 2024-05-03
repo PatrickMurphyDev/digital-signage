@@ -31,9 +31,11 @@ class Index extends React.Component {
       <div className='home'>
         <p>The Digital Signage server is running in the background.</p>
         <div className='btn-group'>
-          <Link href='/layout' style={{ margin: 20 }}>
-            <div className='btn admin'>Admin Home</div>
-          </Link>
+          <div style={{ margin: 20 }}>
+            <Link href='/layout'>
+              <div className='btn admin'>Admin Home</div>
+            </Link>
+          </div>
           <div style={{ margin: 20 }}>
             <DropdownButton
               icon='chevron-down'
