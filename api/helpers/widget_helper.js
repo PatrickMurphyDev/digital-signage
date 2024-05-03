@@ -12,7 +12,7 @@ function addWidget(req, res) {
         return res.json({ success: true })
       })
     })
-    .catch(err => res.json(err))
+    .catch(err => process.stdout.write(JSON.stringify(err)))
 }
 
 function deleteWidget(req, res) {
