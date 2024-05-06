@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
-import { Form, Input } from '../../../components/Form'
+import { Form, Input, Switch } from '../../../components/Form'
 
 class YoutubeOptions extends Component {
   constructor(props) {
     super(props)
-    const { title, color, url } = props.data || {}
+    const { title, color, url, loop } = props.data || {}
     this.state = {
       title,
       color,
-      url
+      url,
+      loop
     }
   }
   handleChange = (name, value) => {
@@ -24,7 +25,7 @@ class YoutubeOptions extends Component {
   }
 
   render() {
-    const { title, color, url } = this.state
+    const { title, color, url, loop } = this.state
     return (
       <div className={'container'}>
         <Form>
@@ -55,9 +56,27 @@ class YoutubeOptions extends Component {
             placeholder={'Optional title...'}
             onChange={this.handleChange}
           />
+          <div>
+            <label>Loop Video</label>
+            <Switch name={'loop'} checkedLabel={'Yes'}
+              uncheckedLabel={'No'}
+              label={'Loop Video'}
+              checked={loop}
+            />
+          </div>
         </Form>
         <style jsx>
           {`
+           label {
+             margin-right: 16px;
+             color: #878787;
+             font-family: 'Open Sans', sans-serif;
+             min-width: 100px;
+             max-width: 100px;
+             display: inline-block;
+             padding-top: 16px;
+             padding-bottom: 16px;
+           }
             h3,
             p {
               font-family: 'Open Sans', sans-serif;

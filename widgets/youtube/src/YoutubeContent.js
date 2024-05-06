@@ -21,7 +21,7 @@ class YoutubeContent extends Component {
   }
 
   render() {
-    const { data: { title, url = DEFAULT_URL, color = DEFAULT_COLOR } = {} } = this.props
+    const { data: { title, url = DEFAULT_URL, color = DEFAULT_COLOR, loop = true } = {} } = this.props
     const { id, service } = getVideoId(url)
     return (
       <div className='youtube'>
@@ -37,7 +37,7 @@ class YoutubeContent extends Component {
             <YouTube
               containerClassName={'youtube-container-nojsx'}
               videoId={id}
-              opts={{
+              opts={{ 
                 /* eslint-disable camelcase */
                 height: '100%',
                 width: '100%',
@@ -50,7 +50,8 @@ class YoutubeContent extends Component {
                   iv_load_policy: 3,
                   modestbranding: 1,
                   rel: 0,
-                  showinfo: 0
+                  showinfo: 0,
+                  loop: loop ? 1 : 0
                 }
                 /* eslint-enable camelcase */
               }}
