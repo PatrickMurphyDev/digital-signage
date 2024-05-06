@@ -19,7 +19,13 @@ class ImageContent extends Component {
   }
 
   render() {
-    const { data: { title, url, fit = DEFAULT_FIT, color = DEFAULT_COLOR } = {} } = this.props
+    console.log(this.props)
+    let tempData = this.props
+    if(typeof tempData.data === 'string'){
+      tempData = {data: JSON.parse(tempData.data)}
+    }
+    const { data: { title, url = '333.png', fit = DEFAULT_FIT, color = DEFAULT_COLOR } = {} } = this.props
+    console.log(url);
     return (
       <div className='image'>
         {title && (
